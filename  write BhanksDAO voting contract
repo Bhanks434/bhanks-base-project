@@ -1,0 +1,57 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+contract BhanksDAO {
+    IERC20 public token;
+
+    struct Proposal {
+        string description;
+        uint256 votesFor;
+        uint256 votesAgainst;
+        bool executed;
+        uint256 deadline;
+    }
+
+    Proposal[] public proposals;
+    mapping(uint256 => mapping(address => bool)) public hasVoted;
+
+    event ProposalCreated(uint256 indexed id, string description);
+    event Voted(uint256 indexed id, address indexed voter, bool support, uint256 weight);
+    event ProposalExecuted(uint256 indexed id);
+
+    constructor(address tokenAddress) {
+        token = IERC20(tokenAddress);
+    }
+
+    function createProposal(string calldata desc) external returns (uint256) {proposals.push(Proposal(desc, 0, 0, false, block.timestamp + 7 days));
+        uint256 id = proposals.length - 1;
+        emit ProposalCreated(id, desc);
+        return id;
+    }
+
+    function vote(uint256 id, bool support) external {
+        require(id < proposals.length, "Invalid proposal");
+        require(!hasVoted[id][msg.sender], "Already voted");
+        require(block.timestamp <= proposals[id].deadline, "Voting closed");
+        uint256 weight = token.balanceOf(msg.sender);
+        require(weight > 0, "No voting power");
+        if (support) proposals[id].votesFor += weight;
+        else proposals[id].votesAgainst += weight;
+        hasVoted[id][msg.sender] = true;
+        emit Voted(id, msg.sender, support, weight);
+    }
+
+    function execute(uint256 id) external {
+        Proposal storage p = proposals[id];
+        require(!p.executed, "Already executed");
+        require(block.timestamp > p.deadline, "Voting still open");
+        require(p.votesFor > p.votesAgainst, "Did not pass");
+        p.executed = true;
+        emit ProposalExecuted(id);
+    }
+
+    function getProposalCount() external view returns (uint256) { return proposals.length;
+    }
+}
