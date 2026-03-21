@@ -1,0 +1,13 @@
+export function getBasescanTxUrl(hash: string, testnet = true): string {
+  const base = testnet
+    ? 'https://sepolia.basescan.org'
+    : 'https://basescan.org'
+  return `${base}/tx/${hash}`
+}
+
+export function getBasescanAddressUrl(address: string, testnet = true): string {
+  const base = testnet
+    ? 'https://sepolia.basescan.org'
+    : 'https://basescan.org'
+  return `${base}/address/${address}`
+}
