@@ -1,0 +1,17 @@
+import { ConnectButton } from '../components/ConnectButton'
+import { WalletInfo } from '../components/WalletInfo'
+import { Balance } from '../components/Balance'
+import { TokenBalance } from '../components/TokenBalance'
+
+export default function Home() {
+  return (
+    <main style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
+      <h1>Bhanks Base Project</h1>
+      <p>ERC-20 · NFT · Staking · DAO — built on Base</p>
+      <ConnectButton />
+      <WalletInfo />
+      <Balance />
+      <TokenBalance />
+    </main>
+  )
+}
