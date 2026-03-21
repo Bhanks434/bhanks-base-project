@@ -1,0 +1,24 @@
+import { useSwitchChain, useChainId } from 'wagmi'
+import { base, baseSepolia } from 'wagmi/chains'
+
+export function NetworkSwitcher() {
+  const chainId = useChainId()
+  const { switchChain } = useSwitchChain()
+
+  return (
+    <div style={{ display: 'flex', gap: 8 }}>
+      <button
+        onClick={() => switchChain({ chainId: baseSepolia.id })}
+        style={{ fontWeight: chainId === baseSepolia.id ? 700 : 400 }}
+      >
+        Base Sepolia
+      </button>
+      <button
+        onClick={() => switchChain({ chainId: base.id })}
+        style={{ fontWeight: chainId === base.id ? 700 : 400 }}
+      >
+        Base Mainnet
+      </button>
+    </div>
+  )
+}
