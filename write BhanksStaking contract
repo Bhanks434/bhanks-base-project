@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract BhanksStaking is Ownable {
+    IERC20 public token;
+    mapping(address => uint256) public stakes;
+    mapping(address => uint256) public stakeTime;
+
+    event Staked(address indexed user, uint256 amount);
+    event Unstaked(address indexed user, uint256 amount, uint256 reward);
+
+    constructor(address tokenAddress) Ownable(msg.sender) {
+        token = IERC20(tokenAddress);
+    }
+
+    function stake(uint256 amount) external {
+        require(amount > 0, "Amount must be > 0");
+        token.transferFrom(msg.sender, address(this), amount);
+        stakes[msg.sender] += amount;
+        stakeTime[msg.sender] = block.timestamp;
+        emit Staked(msg.sender, amount);
+    }
+
+    function calculateReward(address user) public view returns (uint256) {
+        if (stakes[user] == 0) return 0;
+        uint256 timeStaked = block.timestamp - stakeTime[user];
+        return (stakes[user] * timeStaked * 1) / (100 * 1 days);
+    }
+
+    function unstake() external {
+        uint256 amount = stakes[msg.sender];
+        require(amount > 0, "Nothing staked");
+        uint256 reward = calculateReward(msg.sender);
+        stakes[msg.sender] = 0;
+        stakeTime[msg.sender] = 0;
+        token.transfer(msg.sender, amount + reward);
+        emit Unstaked(msg.sender, amount, reward);
+    }
+}
