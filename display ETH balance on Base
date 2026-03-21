@@ -1,0 +1,16 @@
+import { useAccount, useBalance } from 'wagmi'
+import { baseSepolia } from 'wagmi/chains'
+
+export function Balance() {
+  const { address } = useAccount()
+  const { data } = useBalance({
+    address,
+    chainId: baseSepolia.id
+  })
+
+  return (
+    <p>
+      Balance: {parseFloat(data?.formatted || '0').toFixed(4)} ETH
+    </p>
+  )
+}
