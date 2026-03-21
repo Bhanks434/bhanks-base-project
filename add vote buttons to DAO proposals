@@ -1,0 +1,23 @@
+import { useWriteContract } from 'wagmi'
+import { CONTRACTS } from '../constants'
+import BhanksDAOABI from '../abis/BhanksDAO.json'
+
+export function VoteButtons({ proposalId }: { proposalId: number }) {
+  const { writeContract, isPending } = useWriteContract()
+
+  const vote = (support: boolean) => {
+    writeContract({
+      address: CONTRACTS.baseSepolia.BhanksDAO,
+      abi: BhanksDAOABI.abi,
+      functionName: 'vote',
+      args: [BigInt(proposalId), support]
+    })
+  }
+
+  return (
+    <div style={{ display: 'flex', gap: 8 }}>
+      <button onClick={() => vote(true)} disabled={isPending}>Vote For</button>
+      <button onClick={() => vote(false)} disabled={isPending}>Vote Against</button>
+    </div>
+  )
+}
