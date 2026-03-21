@@ -1,0 +1,33 @@
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("BhanksDAO", function () {
+  let token, dao, owner, voter;
+
+  beforeEach(async function () {
+    [owner, voter] = await ethers.getSigners();
+    const Token = await ethers.getContractFactory("BhanksToken");
+    token = await Token.deploy();
+    const DAO = await ethers.getContractFactory("BhanksDAO");
+    dao = await DAO.deploy(await token.getAddress());
+    await token.mint(voter.address, ethers.parseEther("1000"));
+  });
+
+  it("should create a proposal", async function () {
+    await dao.createProposal("Increase staking rewards");
+    expect(await dao.getProposalCount()).to.equal(1);
+  });
+
+  it("should allow token holders to vote", async function () {
+    await dao.createProposal("Test proposal");
+    await dao.connect(voter).vote(0, true);
+    const p = await dao.proposals(0);
+    expect(p.votesFor).to.be.gt(0);
+  });
+
+  it("should prevent double voting", async function () {
+    await dao.createProposal("Test proposal");
+    await dao.connect(voter).vote(0, true);
+    await expect(dao.connect(voter).vote(0, true)).to.be.revertedWith("Already voted");
+  });
+});
