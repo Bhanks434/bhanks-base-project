@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract BhanksNFT is ERC721, Ownable {
+    uint256 private _tokenId;
+    uint256 public mintPrice = 0.001 ether;
+    string private _baseTokenURI;
+
+    constructor() ERC721("BhanksNFT", "BNFT") Ownable(msg.sender) {}
+
+    function mint(address to) public payable {
+        require(msg.value >= mintPrice, "Insufficient ETH");
+        _safeMint(to, _tokenId++);
+    }
+
+    function setBaseURI(string memory uri) public onlyOwner {
+        _baseTokenURI = uri;
+    }
+    function _baseURI() internal view override returns (string memory) {
+        return _baseTokenURI;
+    }
+
+    function withdraw() public onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+
+    function totalMinted() public view returns (uint256) {
+        return _tokenId;
+    }
+}
