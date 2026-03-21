@@ -1,0 +1,21 @@
+import { useWriteContract } from 'wagmi'
+import { CONTRACTS } from '../constants'
+import BhanksStakingABI from '../abis/BhanksStaking.json'
+
+export function UnstakeButton() {
+  const { writeContract, isPending } = useWriteContract()
+
+  const handleUnstake = () => {
+    writeContract({
+      address: CONTRACTS.baseSepolia.BhanksStaking,
+      abi: BhanksStakingABI.abi,
+      functionName: 'unstake',
+    })
+  }
+
+  return (
+    <button onClick={handleUnstake} disabled={isPending}>
+      {isPending ? 'Unstaking...' : 'Unstake + Claim Rewards'}
+    </button>
+  )
+}
