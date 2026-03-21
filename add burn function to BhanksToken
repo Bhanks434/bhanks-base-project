@@ -1,0 +1,4 @@
+// Add inside the contract:
+function burn(uint256 amount) public {
+    _burn(msg.sender, amount);
+}
