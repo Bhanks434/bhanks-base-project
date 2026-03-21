@@ -1,0 +1,13 @@
+const hre = require("hardhat");
+const deployments = require("../deployments.json");
+
+async function main() {
+  const tokenAddress = deployments.baseSepolia.BhanksToken;
+  console.log("Deploying BhanksStaking with token:", tokenAddress);
+  const Staking = await hre.ethers.getContractFactory("BhanksStaking");
+  const staking = await Staking.deploy(tokenAddress);
+  await staking.waitForDeployment();
+  console.log("BhanksStaking deployed to:", await staking.getAddress());
+}
+
+main().catch(console.error);
