@@ -1,0 +1,11 @@
+import { useWaitForTransactionReceipt } from 'wagmi'
+
+export function TxStatus({ hash }: { hash?: `0x${string}` }) {
+  const { isLoading, isSuccess, isError } = useWaitForTransactionReceipt({ hash })
+
+  if (!hash) return null
+  if (isLoading) return <p style={{ color: 'orange' }}>Transaction pending...</p>
+  if (isSuccess) return <p style={{ color: 'green' }}>Transaction confirmed!</p>
+  if (isError) return <p style={{ color: 'red' }}>Transaction failed</p>
+  return null
+}
