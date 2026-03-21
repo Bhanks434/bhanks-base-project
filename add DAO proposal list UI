@@ -1,0 +1,10 @@
+import { useReadContract } from 'wagmi'
+import { CONTRACTS } from '../constants'
+import BhanksDAOABI from '../abis/BhanksDAO.json'
+
+export function ProposalList() {
+  const { data: count } = useReadContract({
+    address: CONTRACTS.baseSepolia.BhanksDAO,
+    abi: BhanksDAOABI.abi,
+    functionName: 'getProposalCount',
+  })
