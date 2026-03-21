@@ -1,0 +1,26 @@
+import { useAccount, useWriteContract } from 'wagmi'
+import { parseEther } from 'viem'
+import { CONTRACTS } from '../constants'
+import BhanksNFTABI from '../abis/BhanksNFT.json'
+
+export function MintButton() {
+  const { address } = useAccount()
+  const { writeContract, isPending } = useWriteContract()
+
+  const handleMint = () => {
+    if (!address) return
+    writeContract({
+      address: CONTRACTS.baseSepolia.BhanksNFT,
+      abi: BhanksNFTABI.abi,
+      functionName: 'mint',
+      args: [address],
+      value: parseEther('0.001')
+    })
+  }
+
+  return (
+    <button onClick={handleMint} disabled={isPending}>
+      {isPending ? 'Minting...' : 'Mint NFT (0.001 ETH)'}
+    </button>
+  )
+}
