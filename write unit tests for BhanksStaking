@@ -1,0 +1,26 @@
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("BhanksStaking", function () {
+  let token, staking, owner, user;
+
+  beforeEach(async function () {
+    [owner, user] = await ethers.getSigners();
+    const Token = await ethers.getContractFactory("BhanksToken");
+    token = await Token.deploy();
+    const Staking = await ethers.getContractFactory("BhanksStaking");
+    staking = await Staking.deploy(await token.getAddress());
+    await token.mint(user.address, ethers.parseEther("1000"));
+  });
+
+  it("should stake tokens", async function () {
+    const amount = ethers.parseEther("100");
+    await token.connect(user).approve(await staking.getAddress(), amount);
+    await staking.connect(user).stake(amount);
+    expect(await staking.stakes(user.address)).to.equal(amount);
+  });
+
+  it("should not allow staking 0", async function () {
+    await expect(staking.connect(user).stake(0)).to.be.revertedWith("Amount must be > 0");
+  });
+});
