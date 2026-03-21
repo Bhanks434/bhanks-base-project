@@ -1,0 +1,28 @@
+# Bhanks Base Project
+
+A full on-chain ecosystem built on [Base](https://base.org).
+
+## What's included
+- **BhanksToken** — ERC-20 token (BHNK)
+- **BhanksNFT** — ERC-721 NFT collection
+- **BhanksStaking** — Stake BHNK, earn rewards
+- **BhanksDAO** — Token-weighted governance
+
+## Tech stack
+- Base L2 blockchain
+- OnchainKit — React components
+- Next.js — Frontend
+- Hardhat — Smart contracts
+- wagmi + viem — Wallet connection
+
+## Status
+In active development. Follow [@bhanks_crypt](https://x.com/bhanks_crypt)
+
+## Setup
+```bash
+git clone https://github.com/Bhanks434/bhanks-base-project
+cd bhanks-base-project
+npm install
+cp .env.example .env
+npm run dev
+```
