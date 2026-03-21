@@ -1,0 +1,9 @@
+import { ConnectWallet } from '@coinbase/onchainkit/wallet'
+
+export function ConnectButton() {
+  return (
+    <div className="flex justify-center p-4">
+      <ConnectWallet />
+    </div>
+  )
+}
