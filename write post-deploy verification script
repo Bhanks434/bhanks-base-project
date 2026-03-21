@@ -1,0 +1,17 @@
+const hre = require("hardhat");
+const deployments = require("../deployments.json");
+
+async function main() {
+  const { BhanksToken, BhanksNFT } = deployments.baseSepolia;
+
+  const token = await hre.ethers.getContractAt("BhanksToken", BhanksToken);
+  const nft = await hre.ethers.getContractAt("BhanksNFT", BhanksNFT);
+
+  console.log("Token name:", await token.name());
+  console.log("Token symbol:", await token.symbol());
+  console.log("NFT name:", await nft.name());
+  console.log("Total minted:", await nft.totalMinted());
+  console.log("All checks passed!");
+}
+
+main().catch(console.error);
