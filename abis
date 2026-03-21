@@ -1,0 +1,8 @@
+npx hardhat compile
+
+mkdir -p src/abis
+
+cp artifacts/contracts/BhanksToken.sol/BhanksToken.json src/abis/
+cp artifacts/contracts/BhanksNFT.sol/BhanksNFT.json src/abis/
+cp artifacts/contracts/BhanksStaking.sol/BhanksStaking.json src/abis/
+cp artifacts/contracts/BhanksDAO.sol/BhanksDAO.json src/abis/
