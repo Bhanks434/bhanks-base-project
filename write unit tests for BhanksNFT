@@ -1,0 +1,31 @@
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("BhanksNFT", function () {
+  let nft, owner, user;
+
+  beforeEach(async function () {
+    [owner, user] = await ethers.getSigners();
+    const NFT = await ethers.getContractFactory("BhanksNFT");
+    nft = await NFT.deploy();
+  });
+
+  it("should mint NFT with correct ETH", async function () {
+    await nft.connect(user).mint(user.address, {
+      value: ethers.parseEther("0.001")
+    });
+    expect(await nft.ownerOf(0)).to.equal(user.address);
+  });
+
+  it("should reject mint with insufficient ETH", async function () {
+    await expect(
+      nft.connect(user).mint(user.address, { value: 0 })
+    ).to.be.revertedWith("Insufficient ETH");
+  });
+
+  it("should track total minted", async function () {
+    await nft.connect(user).mint(user.address, { value: ethers.parseEther("0.001") });
+    await nft.connect(user).mint(user.address, { value: ethers.parseEther("0.001") });
+    expect(await nft.totalMinted()).to.equal(2);
+  });
+});
