@@ -1,0 +1,33 @@
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("BhanksToken", function () {
+  let token, owner, user;
+
+  beforeEach(async function () {
+    [owner, user] = await ethers.getSigners();
+    const Token = await ethers.getContractFactory("BhanksToken");
+    token = await Token.deploy();
+  });
+
+  it("should have correct name and symbol", async function () {
+    expect(await token.name()).to.equal("BhanksToken");
+    expect(await token.symbol()).to.equal("BHNK");
+  });
+
+  it("should mint 1M tokens to owner on deploy", async function () {
+    const balance = await token.balanceOf(owner.address);
+    expect(balance).to.equal(ethers.parseEther("1000000"));
+  });
+
+  it("should allow owner to mint more tokens", async function () {
+    await token.mint(user.address, ethers.parseEther("500"));
+    expect(await token.balanceOf(user.address)).to.equal(ethers.parseEther("500"));
+  });
+
+  it("should allow users to burn their tokens", async function () {
+    await token.mint(user.address, ethers.parseEther("100"));
+    await token.connect(user).burn(ethers.parseEther("50"));
+    expect(await token.balanceOf(user.address)).to.equal(ethers.parseEther("50"));
+  });
+});
