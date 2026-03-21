@@ -1,0 +1,19 @@
+import { useAccount, useReadContract } from 'wagmi'
+import { formatEther } from 'viem'
+import { CONTRACTS } from '../constants'
+import BhanksStakingABI from '../abis/BhanksStaking.json'
+
+export function StakingRewards() {
+  const { address } = useAccount()
+  const { data: reward } = useReadContract({
+    address: CONTRACTS.baseSepolia.BhanksStaking,
+    abi: BhanksStakingABI.abi,
+    functionName: 'calculateReward',
+    args: [address],
+    query: { refetchInterval: 10000 }
+  })
+
+  return (
+    <p>Pending rewards: {reward ? parseFloat(formatEther(reward as bigint)).toFixed(6) : '0'} BHNK</p>
+  )
+}
