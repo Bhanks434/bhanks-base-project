@@ -1,0 +1,9 @@
+npx hardhat run scripts/deployNFT.js --network baseSepolia
+
+# Update deployments.json:
+{
+  "baseSepolia": {
+    "BhanksToken": "0x...",
+    "BhanksNFT": "0xYourNFTAddressHere"
+  }
+}
