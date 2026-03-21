@@ -1,0 +1,17 @@
+import { useAccount } from 'wagmi'
+
+export function WalletInfo() {
+  const { address, isConnected } = useAccount()
+
+  if (!isConnected) return <p>Not connected</p>
+
+  const short = address
+    ? `${address.slice(0,6)}...${address.slice(-4)}`
+    : ''
+
+  return (
+    <div>
+      <p>Connected: {short}</p>
+    </div>
+  )
+}
