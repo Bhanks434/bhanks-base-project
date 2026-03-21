@@ -1,0 +1,9 @@
+# Run this in Terminal:
+npx hardhat run scripts/deployToken.js --network baseSepolia
+
+# Create deployments.json with the address:
+{
+  "baseSepolia": {
+    "BhanksToken": "0xYourDeployedAddressHere"
+  }
+}
