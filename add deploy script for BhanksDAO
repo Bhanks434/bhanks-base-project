@@ -1,0 +1,12 @@
+const hre = require("hardhat");
+const deployments = require("../deployments.json");
+
+async function main() {
+  const tokenAddress = deployments.baseSepolia.BhanksToken;
+  const DAO = await hre.ethers.getContractFactory("BhanksDAO");
+  const dao = await DAO.deploy(tokenAddress);
+  await dao.waitForDeployment();
+  console.log("BhanksDAO deployed to:", await dao.getAddress());
+}
+
+main().catch(console.error);
