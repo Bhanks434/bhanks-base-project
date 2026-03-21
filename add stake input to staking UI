@@ -1,0 +1,42 @@
+import { useState } from 'react'
+import { useWriteContract } from 'wagmi'
+import { parseEther } from 'viem'
+import { CONTRACTS } from '../constants'
+import BhanksTokenABI from '../abis/BhanksToken.json'
+import BhanksStakingABI from '../abis/BhanksStaking.json'
+
+export function StakeInput() {
+  const [amount, setAmount] = useState('')
+  const { writeContract } = useWriteContract()
+
+  const handleApprove = () => {
+    writeContract({
+      address: CONTRACTS.baseSepolia.BhanksToken,
+      abi: BhanksTokenABI.abi,
+      functionName: 'approve',
+      args: [CONTRACTS.baseSepolia.BhanksStaking, parseEther(amount || '0')]
+    })
+  }
+
+  const handleStake = () => {
+    writeContract({
+      address: CONTRACTS.baseSepolia.BhanksStaking,
+      abi: BhanksStakingABI.abi,
+      functionName: 'stake',
+      args: [parseEther(amount || '0')]
+    })
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <input
+        type="number"
+        placeholder="Amount to stake"
+        value={amount}
+        onChange={e => setAmount(e.target.value)}
+      />
+      <button onClick={handleApprove}>1. Approve</button>
+      <button onClick={handleStake}>2. Stake</button>
+    </div>
+  )
+}
