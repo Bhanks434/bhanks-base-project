@@ -1,0 +1,11 @@
+npx hardhat run scripts/deployDAO.js --network baseSepolia
+
+# Final deployments.json should look like:
+{
+  "baseSepolia": {
+    "BhanksToken": "0x...",
+    "BhanksNFT": "0x...",
+    "BhanksStaking": "0x...",
+    "BhanksDAO": "0x..."
+  }
+}
