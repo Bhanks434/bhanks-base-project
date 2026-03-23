@@ -1,0 +1,26 @@
+// scripts/airdrop-list.json:
+[
+  "0xAddress1...",
+  "0xAddress2..."
+]
+
+// scripts/airdrop.js:
+const hre = require("hardhat");
+const addresses = require("./airdrop-list.json");
+const deployments = require("../deployments.json");
+
+async function main() {
+  const token = await hre.ethers.getContractAt(
+    "BhanksToken",
+    deployments.baseSepolia.BhanksToken
+  );
+  const amount = hre.ethers.parseEther("100");
+
+  for (const addr of addresses) {
+    await token.mint(addr, amount);
+    console.log(`Airdropped 100 BHNK to ${addr}`);
+  }
+  console.log("Airdrop complete!");
+}
+
+main().catch(console.error);
