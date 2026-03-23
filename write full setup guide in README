@@ -1,0 +1,30 @@
+## Installation
+
+```bash
+# 1. Clone
+git clone https://github.com/Bhanks434/bhanks-base-project
+cd bhanks-base-project
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment
+cp .env.example .env
+# Edit .env with your API keys
+
+# 4. Run locally
+npm run dev
+```
+
+## Smart contract development
+
+```bash
+# Compile contracts
+npx hardhat compile
+
+# Run tests
+npx hardhat test
+
+# Deploy to Base Sepolia
+npx hardhat run scripts/deployToken.js --network baseSepolia
+```
