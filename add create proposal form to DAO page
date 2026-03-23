@@ -1,0 +1,34 @@
+import { useState } from 'react'
+import { useWriteContract } from 'wagmi'
+import { CONTRACTS } from '../../constants'
+import BhanksDAOABI from '../../abis/BhanksDAO.json'
+
+export function CreateProposal() {
+  const [description, setDescription] = useState('')
+  const { writeContract, isPending } = useWriteContract()
+
+  const handleCreate = () => {
+    if (!description.trim()) return
+    writeContract({
+      address: CONTRACTS.baseSepolia.BhanksDAO,
+      abi: BhanksDAOABI.abi,
+      functionName: 'createProposal',
+      args: [description]
+    })
+    setDescription('')
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <textarea
+        placeholder="Describe your proposal..."
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        rows={3}
+      />
+      <button onClick={handleCreate} disabled={isPending || !description}>
+        {isPending ? 'Submitting...' : 'Create Proposal'}
+      </button>
+    </div>
+  )
+}
