@@ -1,0 +1,8 @@
+# Add to top of README.md:
+![Commits](https://img.shields.io/github/commit-activity/t/Bhanks434/bhanks-base-project?label=commits&color=brightgreen)
+![Base](https://img.shields.io/badge/built%20on-Base-0052FF)
+
+# Then:
+git add README.md
+git commit -m "chore: 100 public commits on Base milestone"
+git push origin main
