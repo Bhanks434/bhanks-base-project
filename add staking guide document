@@ -1,0 +1,30 @@
+# BhanksStaking Guide
+
+## Overview
+Stake your BHNK tokens to earn passive rewards.
+The contract pays 1% per day on staked amount.
+
+## How to stake
+1. Connect your wallet on the Stake page
+2. Enter the amount of BHNK you want to stake
+3. Click Approve — allows the contract to move
+   your tokens (first transaction)
+4. Click Stake — locks your tokens
+   (second transaction)
+5. Rewards start accumulating immediately
+
+## How to unstake
+1. Go to the Stake page
+2. Click Unstake + Claim Rewards
+3. Confirm the transaction
+4. You receive your stake plus all rewards
+
+## Reward calculation
+Rewards = (staked amount x time staked x 1%)
+          divided by (100 x 1 day in seconds)
+
+## Risks
+- Smart contracts can have bugs
+- Contracts are not audited
+- Only stake what you can afford to lose
+- Test on Base Sepolia before mainnet
