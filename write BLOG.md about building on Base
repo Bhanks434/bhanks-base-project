@@ -1,0 +1,23 @@
+# Building on Base: From 0 to 100 Commits
+
+## What I built
+Over the past few weeks I built a full on-chain ecosystem on Base:
+- An ERC-20 token (BHNK)
+- An NFT collection (BhanksNFT)
+- A DeFi staking protocol
+- A DAO governance system
+- A Next.js frontend connecting it all
+
+## What I learned
+- How Solidity smart contracts work
+- How wagmi and viem connect wallets to React
+- How to deploy to Base Sepolia and Base mainnet
+- How to verify contracts on Basescan
+- The importance of testing before deploying
+
+## What's next
+- Gasless minting with Coinbase Paymaster
+- IPFS metadata for NFTs
+- Growing the BHNK community
+
+Follow along: @bhanks_crypt
