@@ -1,0 +1,32 @@
+# BhanksDAO Governance Guide
+
+## Overview
+BhanksDAO is on-chain governance where BHNK
+holders vote on protocol decisions.
+Voting power equals your BHNK balance.
+
+## How to create a proposal
+1. Connect your wallet on the DAO page
+2. Make sure you hold BHNK tokens
+3. Click Create Proposal
+4. Write a clear description
+5. Confirm the transaction
+6. Voting opens immediately for 7 days
+
+## How to vote
+1. Go to the DAO page
+2. Find an active proposal
+3. Click Vote For or Vote Against
+4. Confirm in your wallet
+5. Your vote is recorded on-chain permanently
+
+## How proposals pass
+- Voting period of 7 days has ended
+- Votes For is greater than Votes Against
+- Anyone can then call execute() to finalize
+
+## Ideas for proposals
+- Change the staking reward rate
+- Set a new NFT mint price
+- Approve a community airdrop
+- Add a new protocol feature
