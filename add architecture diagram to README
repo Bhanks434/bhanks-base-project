@@ -1,0 +1,15 @@
+# Architecture
+
+```
+User Browser
+    |
+    v
+Next.js Frontend (OnchainKit + wagmi)
+    |
+    v
+Base Sepolia / Base Mainnet (L2)
+    |
+    +-- BhanksToken (ERC-20)   0x...
+    +-- BhanksNFT   (ERC-721)  0x...
+    +-- BhanksStaking           0x...
+    +-- BhanksDAO               0x...
