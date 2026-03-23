@@ -1,0 +1,59 @@
+# Support
+
+## Getting help
+
+### Documentation
+Read the full docs in the /docs folder:
+- WALLET_SETUP.md — Setting up your wallet
+- STAKING.md — How to stake BHNK
+- DAO.md — How governance works
+- TOKEN.md — BhanksToken details
+- NFT.md — BhanksNFT collection details
+- DEPLOYMENT.md — How to deploy contracts
+
+### Community
+Follow and DM on X: @bhanks_crypt
+
+### Bug reports
+Open an issue on GitHub:
+github.com/Bhanks434/bhanks-base-project/issues
+
+Please include:
+- What you were trying to do
+- What happened instead
+- Your wallet address (never your private key)
+- Screenshot if possible
+
+### Security issues
+Do NOT open a public issue for security bugs.
+See SECURITY.md for how to report privately.
+```
+
+In GitHub Desktop:
+- Summary: `docs: add support document`
+- Click **Commit to main** → **Push origin**
+
+---
+
+## Commit L — Update .gitignore
+
+Open your existing `.gitignore` file, add these lines at the very bottom, save **Cmd+S**.
+```
+# Coverage
+coverage/
+coverage.json
+
+# Hardhat
+cache/
+artifacts/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env.local
+.env.production
