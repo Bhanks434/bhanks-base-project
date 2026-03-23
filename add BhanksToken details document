@@ -1,0 +1,27 @@
+# BhanksToken (BHNK)
+
+## Overview
+BHNK is the native utility and governance token
+of the Bhanks Base ecosystem.
+
+## Details
+- Name: BhanksToken
+- Symbol: BHNK
+- Standard: ERC-20
+- Network: Base
+- Initial supply: 1,000,000 BHNK
+
+## Utility
+- Governance: Vote on BhanksDAO proposals
+- Staking: Stake BHNK to earn rewards
+- Access: Future utility TBD
+
+## Distribution
+- 100% minted to deployer on launch
+- Community airdrops planned
+- No VC allocation
+- No presale
+
+## Contract
+Deployed on Base Sepolia testnet.
+Mainnet deployment coming in v1.1.
