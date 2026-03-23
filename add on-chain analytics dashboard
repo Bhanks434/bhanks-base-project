@@ -1,0 +1,26 @@
+import { useReadContracts } from 'wagmi'
+import { formatEther } from 'viem'
+import { CONTRACTS } from '../../constants'
+import TokenABI from '../../abis/BhanksToken.json'
+import NFTABI from '../../abis/BhanksNFT.json'
+
+export default function Analytics() {
+  const { data } = useReadContracts({
+    contracts: [
+      { address: CONTRACTS.baseSepolia.BhanksToken, abi: TokenABI.abi, functionName: 'totalSupply' },
+      { address: CONTRACTS.baseSepolia.BhanksNFT, abi: NFTABI.abi, functionName: 'totalMinted' },
+      { address: CONTRACTS.baseSepolia.BhanksToken, abi: TokenABI.abi, functionName: 'balanceOf', args: [CONTRACTS.baseSepolia.BhanksStaking] },
+    ]
+  })
+
+  const [supply, minted, tvl] = data || []
+
+  return (
+    <main style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
+      <h1>Analytics</h1>
+      <p>Total BHNK supply: {supply?.result ? parseFloat(formatEther(supply.result as bigint)).toLocaleString() : '-'}</p>
+      <p>NFTs minted: {minted?.result?.toString() || '-'}</p>
+      <p>Staking TVL: {tvl?.result ? parseFloat(formatEther(tvl.result as bigint)).toFixed(2) : '-'} BHNK</p>
+    </main>
+  )
+}
