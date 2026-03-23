@@ -1,0 +1,16 @@
+import { Identity, Avatar, Name, Address } from '@coinbase/onchainkit/identity'
+import { base } from 'wagmi/chains'
+import { useAccount } from 'wagmi'
+
+export function UserProfile() {
+  const { address } = useAccount()
+  if (!address) return null
+
+  return (
+    <Identity address={address} chain={base}>
+      <Avatar />
+      <Name />
+      <Address />
+    </Identity>
+  )
+}
