@@ -1,0 +1,13 @@
+import { MintButton } from '../../components/MintButton'
+import { TxStatus } from '../../components/TxStatus'
+import { useState } from 'react'
+
+export default function MintPage() {
+  return (
+    <main style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
+      <h1>Mint BhanksNFT</h1>
+      <p>Mint price: 0.001 ETH on Base Sepolia</p>
+      <MintButton />
+    </main>
+  )
+}
