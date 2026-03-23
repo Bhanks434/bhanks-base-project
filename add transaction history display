@@ -1,0 +1,20 @@
+import { useState } from 'react'
+import { getBasescanAddressUrl } from '../utils/basescan'
+import { useAccount } from 'wagmi'
+
+export function TxHistory() {
+  const { address } = useAccount()
+
+  if (!address) return null
+
+  const basescanUrl = getBasescanAddressUrl(address, true)
+
+  return (
+    <div>
+      <p>View your full transaction history on Basescan:</p>
+      <a href={basescanUrl} target="_blank" rel="noopener noreferrer">
+        View on Basescan
+      </a>
+    </div>
+  )
+}
