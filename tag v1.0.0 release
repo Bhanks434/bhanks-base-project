@@ -1,0 +1,6 @@
+git tag -a v1.0.0 -m "v1.0.0 — Base mainnet launch"
+git push origin v1.0.0
+
+# Then make an empty commit to record it in your history:
+git commit --allow-empty -m "chore: tag v1.0.0 release"
+git push origin main
