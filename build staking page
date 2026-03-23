@@ -1,0 +1,15 @@
+import { StakeInput } from '../../components/StakeInput'
+import { UnstakeButton } from '../../components/UnstakeButton'
+import { StakingRewards } from '../../components/StakingRewards'
+
+export default function StakePage() {
+  return (
+    <main style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
+      <h1>Stake BHNK</h1>
+      <p>Earn 1% per day on your staked tokens</p>
+      <StakingRewards />
+      <StakeInput />
+      <UnstakeButton />
+    </main>
+  )
+}
