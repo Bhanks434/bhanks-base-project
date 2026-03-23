@@ -1,0 +1,18 @@
+/**
+ * Shortens an Ethereum address for display in the UI
+ * @param address - Full 42-character Ethereum address
+ * @returns Shortened address in format 0x1234...5678
+ * @example shortenAddress("0xabcd...1234") // "0xabcd...1234"
+ */
+export function shortenAddress(address: string): string {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`
+}
+
+/**
+ * Formats a BigInt wei value to a human-readable token amount
+ * @param wei - Amount in wei (BigInt)
+ * @param decimals - Number of decimal places to show
+ */
+export function formatTokenAmount(wei: bigint, decimals = 2): string {
+  return parseFloat(formatEther(wei)).toFixed(decimals)
+}
