@@ -1,0 +1,9 @@
+// GOOD comments explain why:
+
+// Prevent re-entrancy: update state before transfer
+stakes[msg.sender] = 0;
+token.transfer(msg.sender, amount + reward);
+
+// Use block.timestamp for reward — fine for 1-day precision
+// but avoid for anything needing sub-minute accuracy
+uint256 timeStaked = block.timestamp - stakeTime[user];
