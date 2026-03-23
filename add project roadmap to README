@@ -1,0 +1,23 @@
+cd ..
+```
+
+Then do commit 76 right now — it's super simple, just editing the README. Open `README.md` in VS Code and add this section at the bottom:
+```
+## Roadmap
+
+### v1.0 — Testnet (current)
+- [x] BhanksToken ERC-20
+- [x] BhanksNFT collection
+- [x] Staking protocol
+- [x] DAO governance
+- [x] Next.js frontend
+
+### v1.1 — Mainnet launch
+- [ ] Deploy all contracts to Base mainnet
+- [ ] Gasless minting with Coinbase Paymaster
+- [ ] Coinbase Smart Wallet integration
+
+### v2.0 — Growth
+- [ ] Merkle allowlist for NFT presale
+- [ ] IPFS metadata for NFTs
+- [ ] Token airdrop campaign
