@@ -1,0 +1,14 @@
+export const CONTRACTS = {
+  baseSepolia: {
+    BhanksToken: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+    BhanksNFT: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+    BhanksStaking: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+    BhanksDAO: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+  },
+  base: {
+    BhanksToken: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+    BhanksNFT: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+    BhanksStaking: "0x51e646ADe1737Be53afd6D6153A93804cEd5548F..." as `0x${string}`,
+    BhanksDAO: "0x..." as `0x${string}`,
+  }
+}
