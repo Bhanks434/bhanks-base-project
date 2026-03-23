@@ -1,0 +1,9 @@
+npx hardhat run scripts/deployToken.js --network base
+
+# Update deployments.json:
+{
+  "baseSepolia": { ... },
+  "base": {
+    "BhanksToken": "0xYourMainnetAddressHere"
+  }
+}
