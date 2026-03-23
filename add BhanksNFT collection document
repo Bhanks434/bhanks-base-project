@@ -1,0 +1,28 @@
+# BhanksNFT Collection
+
+## Overview
+BhanksNFT is an ERC-721 collection on Base.
+Each NFT has a unique token ID starting from 0.
+
+## Details
+- Name: BhanksNFT
+- Symbol: BNFT
+- Standard: ERC-721
+- Network: Base
+- Mint price: 0.001 ETH
+
+## How to mint
+1. Connect your Coinbase Wallet or MetaMask
+2. Make sure you are on Base network
+3. Click Mint NFT on the mint page
+4. Confirm the transaction in your wallet
+5. Wait for confirmation — under 5 seconds
+
+## Revenue
+All mint revenue goes to the contract owner
+via the withdraw() function.
+
+## Allowlist
+A merkle tree allowlist is available for
+presale phases. Contact @bhanks_crypt on X
+to get on the allowlist.
