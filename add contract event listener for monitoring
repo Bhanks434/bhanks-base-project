@@ -1,0 +1,23 @@
+const { ethers } = require("hardhat");
+const deployments = require("../deployments.json");
+
+async function main() {
+  const { BhanksToken, BhanksNFT } = deployments.baseSepolia;
+
+  const token = await ethers.getContractAt("BhanksToken", BhanksToken);
+  const nft = await ethers.getContractAt("BhanksNFT", BhanksNFT);
+
+  console.log("Monitoring events on Base Sepolia...");
+
+  token.on("Transfer", (from, to, amount) => {
+    console.log(`BHNK Transfer: ${from} -> ${to}: ${ethers.formatEther(amount)} BHNK`);
+  });
+
+  nft.on("Transfer", (from, to, tokenId) => {
+    if (from === ethers.ZeroAddress) {
+      console.log(`NFT Minted: #${tokenId} to ${to}`);
+    }
+  });
+}
+
+main().catch(console.error);
