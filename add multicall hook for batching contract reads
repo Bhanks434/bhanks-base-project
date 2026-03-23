@@ -1,0 +1,18 @@
+import { useReadContracts } from 'wagmi'
+import { useAccount } from 'wagmi'
+import { CONTRACTS } from '../constants'
+import TokenABI from '../abis/BhanksToken.json'
+import StakingABI from '../abis/BhanksStaking.json'
+
+export function useProtocolData() {
+  const { address } = useAccount()
+
+  return useReadContracts({
+    contracts: [
+      { address: CONTRACTS.baseSepolia.BhanksToken, abi: TokenABI.abi, functionName: 'totalSupply' },
+      { address: CONTRACTS.baseSepolia.BhanksToken, abi: TokenABI.abi, functionName: 'balanceOf', args: [address] },
+      { address: CONTRACTS.baseSepolia.BhanksStaking, abi: StakingABI.abi, functionName: 'stakes', args: [address] },
+      { address: CONTRACTS.baseSepolia.BhanksStaking, abi: StakingABI.abi, functionName: 'calculateReward', args: [address] },
+    ]
+  })
+}
