@@ -1,0 +1,21 @@
+import { createPublicClient, http } from 'viem'
+import { baseSepolia } from 'viem/chains'
+
+const client = createPublicClient({
+  chain: baseSepolia,
+  transport: http()
+})
+
+export async function estimateMintGas(to: `0x${string}`): Promise<string> {
+  const gas = await client.estimateGas({
+    account: to,
+    to: to,
+    value: BigInt(1000000000000000), // 0.001 ETH
+  })
+  return gas.toString()
+}
+
+export async function getGasPrice(): Promise<string> {
+  const price = await client.getGasPrice()
+  return (Number(price) / 1e9).toFixed(2) + ' gwei'
+}
