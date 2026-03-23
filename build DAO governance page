@@ -1,0 +1,11 @@
+import { ProposalList } from '../../components/ProposalList'
+
+export default function DAOPage() {
+  return (
+    <main style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
+      <h1>BhanksDAO</h1>
+      <p>Vote on proposals with your BHNK tokens</p>
+      <ProposalList />
+    </main>
+  )
+}
