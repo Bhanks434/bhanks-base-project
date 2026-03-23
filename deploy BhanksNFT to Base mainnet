@@ -1,0 +1,9 @@
+npx hardhat run scripts/deployNFT.js --network base
+
+# Update deployments.json base section:
+{
+  "base": {
+    "BhanksToken": "0x...",
+    "BhanksNFT": "0xYourMainnetNFTAddress"
+  }
+}
