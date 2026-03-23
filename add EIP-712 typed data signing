@@ -1,0 +1,28 @@
+import { useSignTypedData } from 'wagmi'
+
+export function useTypedSign() {
+  const { signTypedData, data: signature } = useSignTypedData()
+
+  const signVote = (proposalId: number) => {
+    signTypedData({
+      domain: {
+        name: 'BhanksDAO',
+        version: '1',
+        chainId: 84532,
+      },
+      types: {
+        Vote: [
+          { name: 'proposalId', type: 'uint256' },
+          { name: 'support', type: 'bool' },
+        ],
+      },
+      primaryType: 'Vote',
+      message: {
+        proposalId: BigInt(proposalId),
+        support: true,
+      },
+    })
+  }
+
+  return { signVote, signature }
+}
