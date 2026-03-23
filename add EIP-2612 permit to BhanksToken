@@ -1,0 +1,14 @@
+// Update BhanksToken.sol imports:
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+
+// Update contract declaration:
+contract BhanksToken is ERC20Permit, Ownable {
+    constructor()
+        ERC20("BhanksToken", "BHNK")
+        ERC20Permit("BhanksToken")
+        Ownable(msg.sender)
+    {
+        _mint(msg.sender, 1_000_000 * 10 ** decimals());
+    }
+    // ... rest of contract unchanged
+}
