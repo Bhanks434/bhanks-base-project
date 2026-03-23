@@ -1,0 +1,23 @@
+# Deployment Guide
+
+## Prerequisites
+- Wallet with Base mainnet ETH
+- PRIVATE_KEY in .env
+- BASE_MAINNET_RPC in .env
+
+## Deploy to Base Mainnet
+
+```bash
+npx hardhat run scripts/deployToken.js --network base
+npx hardhat run scripts/deployNFT.js --network base
+npx hardhat run scripts/deployStaking.js --network base
+npx hardhat run scripts/deployDAO.js --network base
+```
+
+## Verify on Basescan
+```bash
+npx hardhat verify --network base CONTRACT_ADDRESS
+```
+
+## Update frontend
+Update CONTRACTS in src/constants.ts with mainnet addresses.
