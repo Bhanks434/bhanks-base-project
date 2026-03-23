@@ -1,0 +1,10 @@
+## Live App
+https://bhanks-base-project.vercel.app
+
+## Live Contracts (Base Mainnet)
+| Contract | Address |
+|----------|----------|
+| BhanksToken | [0x...](https://basescan.org/address/0x...) |
+| BhanksNFT | [0x...](https://basescan.org/address/0x...) |
+| BhanksStaking | [0x...](https://basescan.org/address/0x...) |
+| BhanksDAO | [0x...](https://basescan.org/address/0x...) |
