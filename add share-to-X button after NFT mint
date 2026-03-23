@@ -1,0 +1,14 @@
+// Add this function and button to MintButton.tsx:
+const handleShare = (txHash: string) => {
+  const text = encodeURIComponent(
+    `Just minted a BhanksNFT on @base!\n\nhttps://sepolia.basescan.org/tx/${txHash}\n\nvia @bhanks_crypt`
+  )
+  window.open(`https://x.com/intent/tweet?text=${text}`, '_blank')
+}
+
+// In your JSX after successful mint:
+{hash && (
+  <button onClick={() => handleShare(hash)}>
+    Share on X
+  </button>
+)}
