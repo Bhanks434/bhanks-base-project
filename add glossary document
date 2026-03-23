@@ -1,0 +1,41 @@
+# Glossary
+
+## Base
+An Ethereum L2 blockchain built by Coinbase.
+Fast, cheap, and EVM-compatible.
+
+## ERC-20
+A standard for fungible tokens on Ethereum/Base.
+BHNK is an ERC-20 token.
+
+## ERC-721
+A standard for non-fungible tokens (NFTs).
+BhanksNFT follows this standard.
+
+## Staking
+Locking tokens in a smart contract to earn rewards
+over time. BhanksStaking pays 1% per day.
+
+## DAO
+Decentralized Autonomous Organization. BhanksDAO
+lets BHNK holders vote on protocol decisions.
+
+## wagmi
+A React library for connecting wallets and reading
+from blockchains. Used throughout this project.
+
+## viem
+A TypeScript library for interacting with EVM
+chains. Used under the hood with wagmi.
+
+## OnchainKit
+A React component library by Coinbase for building
+apps on Base.
+
+## Base Sepolia
+The test network for Base. Free ETH available
+from faucets. Use this before mainnet.
+
+## Gas
+The fee paid to process a transaction on Base.
+Measured in gwei.
