@@ -1,0 +1,21 @@
+// Add to BhanksNFT.sol:
+import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+
+bytes32 public merkleRoot;
+bool public allowlistActive = true;
+
+function setMerkleRoot(bytes32 root) public onlyOwner {
+    merkleRoot = root;
+}
+
+function mintAllowlist(bytes32[] calldata proof) external payable {
+    require(allowlistActive, "Allowlist phase ended");
+    require(msg.value >= mintPrice, "Insufficient ETH");
+    bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
+    require(MerkleProof.verify(proof, merkleRoot, leaf), "Not on allowlist");
+    _safeMint(msg.sender, _tokenId++);
+}
+
+function endAllowlist() public onlyOwner {
+    allowlistActive = false;
+}
