@@ -1,0 +1,13 @@
+import { formatEther } from 'viem'
+
+export function shortenAddress(address: string): string {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`
+}
+
+export function formatTokenAmount(wei: bigint, decimals = 2): string {
+  return parseFloat(formatEther(wei)).toFixed(decimals)
+}
+
+export function formatDate(timestamp: number): string {
+  return new Date(timestamp * 1000).toLocaleDateString()
+}
