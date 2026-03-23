@@ -1,0 +1,18 @@
+// Add to BhanksNFT.sol:
+mapping(address => address) public referredBy;
+mapping(address => uint256) public referralCount;
+
+event MintedWithReferral(address indexed minter, address indexed referrer, uint256 tokenId);
+
+function mintWithReferral(address referrer) external payable {
+    require(msg.value >= mintPrice, "Insufficient ETH");
+    require(referrer != msg.sender, "Cannot refer yourself");
+    require(referrer != address(0), "Invalid referrer");
+
+    referredBy[msg.sender] = referrer;
+    referralCount[referrer]++;
+
+    uint256 tokenId = _tokenId++;
+    _safeMint(msg.sender, tokenId);
+    emit MintedWithReferral(msg.sender, referrer, tokenId);
+}
