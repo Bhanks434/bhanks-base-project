@@ -1,0 +1,21 @@
+// Add to hardhat.config.js:
+etherscan: {
+  apiKey: {
+    base: process.env.BASESCAN_API_KEY,
+    baseSepolia: process.env.BASESCAN_API_KEY
+  },
+  customChains: [{
+    network: "base",
+    chainId: 8453,
+    urls: {
+      apiURL: "https://api.basescan.org/api",
+      browserURL: "https://basescan.org"
+    }
+  }]
+}
+
+# Verify each contract:
+npx hardhat verify --network base 0xTokenAddress
+npx hardhat verify --network base 0xNFTAddress
+npx hardhat verify --network base 0xStakingAddress BHANKSTOKEN_ADDRESS
+npx hardhat verify --network base 0xDAOAddress BHANKSTOKEN_ADDRESS
