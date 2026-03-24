@@ -1,0 +1,36 @@
+# Base Network Information
+
+## What is Base?
+Base is an Ethereum Layer 2 blockchain built
+by Coinbase. It is fast, cheap, and secure.
+
+## Why Base?
+- Low gas fees (fractions of a cent)
+- Fast transactions (2 second block time)
+- Built by Coinbase — trusted and backed
+- EVM compatible — all Ethereum tools work
+- Growing ecosystem of apps and users
+
+## Network details
+
+### Base Mainnet
+- Chain ID: 8453
+- RPC URL: https://mainnet.base.org
+- Explorer: https://basescan.org
+- Symbol: ETH
+
+### Base Sepolia (Testnet)
+- Chain ID: 84532
+- RPC URL: https://sepolia.base.org
+- Explorer: https://sepolia.basescan.org
+- Symbol: ETH (free from faucets)
+
+## Bridging to Base
+- Official bridge: bridge.base.org
+- From Ethereum to Base takes ~1 minute
+- From Base to Ethereum takes ~7 days
+- Third-party bridges are faster for withdrawal
+
+## Gas on Base
+Average transaction costs less than $0.01.
+Much cheaper than Ethereum mainnet.
